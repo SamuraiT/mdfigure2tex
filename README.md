@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/SamuraiT/mdfigure2tex.svg)](https://travis-ci.org/SamuraiT/mdfigure2tex)
+
 # FigureTemplate
 
 FigureTemplate convert simple figure syntax to tex figure
