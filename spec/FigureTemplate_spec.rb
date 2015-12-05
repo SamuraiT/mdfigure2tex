@@ -17,7 +17,7 @@ texの図をレンダーするよ
 
 \\begin{figure}[htbp]
 \\centering
-\\includegraphics[width=50cm]{image_path}
+\\includegraphics[width=50cm,height=50cm]{image_path}
 \\caption{caption}
 \\label{label}
 \\end{figure}
@@ -33,7 +33,7 @@ EOD
   describe 'figure and render' do
     let(:template) {
       "<%= figure('image_path', \
-        {width: 50, height: 10}, \
+        {width: 50}, \
         'caption', \
         'label') %>"
     }
@@ -50,9 +50,32 @@ EOD
       EOD
     }
 
-    it 'generate figure correctly' do
-      figure = FigureTemplate::Engine::new(template)
-      expect(figure.render).to eq(tex_figure)
+    let(:tex_figure_height) {
+      <<-EOD.gsub(/ /, '')
+
+          \\begin{figure}[htbp]
+          \\centering
+          \\includegraphics[width=50cm,height=50cm]{image_path}
+          \\caption{caption}
+          \\label{label}
+          \\end{figure}
+      EOD
+    }
+
+    context "with width" do
+      it 'generate figure correctly' do
+        figure = FigureTemplate::Engine::new(template)
+        expect(figure.render).to eq(tex_figure)
+      end
+    end
+
+    context "width height" do
+      let(:template){ "<%= figure('image_path', {width: 50, height: 50},'caption', 'label') %>" }
+
+      it 'generate figure correctly' do
+        figure = FigureTemplate::Engine::new(template)
+        expect(figure.render).to eq(tex_figure_height)
+      end
     end
   end
 

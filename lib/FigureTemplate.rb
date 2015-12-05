@@ -21,15 +21,27 @@ module FigureTemplate
     end
 
     def figure(image_path, size, caption, label)
-      <<-EOD.gsub(/ /, '')
+      if size[:height].nil?
+        <<-EOD.gsub(/ /, '')
 
-        \\begin{figure}[htbp]
-        \\centering
-        \\includegraphics[width=#{size[:width]}cm]{#{image_path}}
-        \\caption{#{caption}}
-        \\label{#{label}}
-        \\end{figure}
-      EOD
+          \\begin{figure}[htbp]
+          \\centering
+          \\includegraphics[width=#{size[:width]}cm]{#{image_path}}
+          \\caption{#{caption}}
+          \\label{#{label}}
+          \\end{figure}
+        EOD
+      elsif size[:height]
+        <<-EOD.gsub(/ /, '')
+
+          \\begin{figure}[htbp]
+          \\centering
+          \\includegraphics[width=#{size[:width]}cm,height=#{size[:height]}cm]{#{image_path}}
+          \\caption{#{caption}}
+          \\label{#{label}}
+          \\end{figure}
+        EOD
+      end
     end
 
     def self.readfile
