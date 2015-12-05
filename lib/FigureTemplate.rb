@@ -4,7 +4,7 @@ require 'erb'
 module FigureTemplate
   class Engine
     include ERB::Util
-    attr_accessor :items, :template, :date
+    attr_accessor :template
 
     def initialize(template)
       @template = template
