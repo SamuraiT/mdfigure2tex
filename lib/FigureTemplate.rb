@@ -1,7 +1,7 @@
 require "FigureTemplate/version"
+require 'erb'
 
 module FigureTemplate
-  require 'erb'
   class Engine
     include ERB::Util
     attr_accessor :items, :template, :date
