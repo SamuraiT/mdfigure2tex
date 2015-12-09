@@ -31,13 +31,6 @@ EOD
   end
 
   describe 'figure and render' do
-    let(:template) {
-      "<%= figure('image_path', \
-        {width: 50}, \
-        'caption', \
-        'label') %>"
-    }
-
     let(:tex_figure) {
       <<-EOD.gsub(/ /, '')
 
@@ -64,6 +57,8 @@ EOD
 
     context "with width" do
       it 'generate figure correctly' do
+        let(:template) { "<%= figure('image_path', {width: 50}, 'caption', 'label') %>" }
+
         figure = FigureTemplate::Engine::new(template)
         expect(figure.render).to eq(tex_figure)
       end
