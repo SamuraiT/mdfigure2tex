@@ -43,7 +43,7 @@ EOD
 
           \\begin{figure}[htbp]
           \\centering
-          \\includegraphics[width=50cm,height=10cm]{image_path}
+          \\includegraphics[width=50cm]{image_path}
           \\caption{caption}
           \\label{label}
           \\end{figure}
