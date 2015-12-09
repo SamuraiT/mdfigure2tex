@@ -5,7 +5,7 @@ describe FigureTemplate do
     <<-EOD
 # markdown
 texの図をレンダーするよ
-<%= figure("image_path", {width: 50, height: 50}, "caption", "label") %>
+<%= figure("image_path", {width: 50}, "caption hoge", "label") %>
   ほげ
 EOD
   end
@@ -17,8 +17,8 @@ texの図をレンダーするよ
 
 \\begin{figure}[htbp]
 \\centering
-\\includegraphics[width=50cm,height=50cm]{image_path}
-\\caption{caption}
+\\includegraphics[width=50cm]{image_path}
+\\caption{caption hoge}
 \\label{label}
 \\end{figure}
 
@@ -43,7 +43,7 @@ EOD
 
           \\begin{figure}[htbp]
           \\centering
-          \\includegraphics[width=50cm]{image_path}
+          \\includegraphics[width=50cm,height=10cm]{image_path}
           \\caption{caption}
           \\label{label}
           \\end{figure}
