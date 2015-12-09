@@ -56,9 +56,9 @@ EOD
     }
 
     context "with width" do
-      it 'generate figure correctly' do
-        let(:template) { "<%= figure('image_path', {width: 50}, 'caption', 'label') %>" }
+      let(:template) { "<%= figure('image_path', {width: 50}, 'caption', 'label') %>" }
 
+      it 'generate figure correctly' do
         figure = FigureTemplate::Engine::new(template)
         expect(figure.render).to eq(tex_figure)
       end
